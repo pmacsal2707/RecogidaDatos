@@ -10,8 +10,21 @@
   <div class="ion-padding">
     <ion-label color="warning">¿Cuál es el resultado de: {{ operacion }} ?</ion-label>
     <p *ngIf="resultado !== undefined">{{ resultado }}</p>
+    
     <ion-input type="number" [(ngModel)]="respuestaUsuario" placeholder="Introduce tu respuesta"></ion-input>
+    
     <ion-button (click)="compruebaRespuesta()">Comprobar</ion-button>
     <ion-button (click)="generarOperacion()">Nueva operación</ion-button>
+    
+    <p>Tiempo restante: {{ tiempoRestante }} segundos</p>
+    
+    <h3>Historial de Respuestas</h3>
+    <ion-list>
+      <ion-item *ngFor="let item of historial">
+        <strong>Operación:</strong> {{ item.operacion }} | 
+        <strong>Tu respuesta:</strong> {{ item.respuestaUsuario }} | 
+        <strong>Resultado:</strong> {{ item.resultado }}
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
